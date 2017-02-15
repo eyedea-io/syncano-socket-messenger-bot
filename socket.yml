@@ -4,26 +4,18 @@ description: Facebook Messenger Bot
 
 config:
   FACEBOOK_APP_TOKEN:
+    description: Facebook App Page Token
+    long_description: |
+      To find the token, go to the 'Messenger > Settings > Token Generation'
+      section in your Facebook Application settings panel at https://developers.facebook.com.
     required: true
 
 event_handlers:
-  events.messenger-bot-msg:
+  events.m-bot-send-msg:
     description: Handling sending message to FB user
-    file: scripts/message_received.js
+    file: scripts/send_message.js
 
 endpoints:
   webhook:
     description: For authentication purpose
     file: scripts/webhook.js
-    parameters:
-      verify_token:
-        type: string
-        description: Token
-        example: 21ds2b214kj1k24g64h34g6k643k
-    response:
-      mimetype: text/plain
-      examples:
-        -
-          exit_code: 200
-          description: Success
-          example: Some response

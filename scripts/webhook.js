@@ -1,3 +1,4 @@
+import {debug} from './helpers/debug';
 import s from './helpers/syncano';
 
 if (ARGS['hub.mode'] === 'subscribe') {
@@ -16,9 +17,8 @@ if (ARGS.entry && ARGS.entry[0] && ARGS.entry[0].messaging) {
       if (event.message && event.message.text) {
           let text = event.message.text
           // Sending event
-          console.log('messenger-bot-msg', {text, sender});
-          s.event.emit('messenger-bot-msg', {text, sender});
-
+          debug('messenger-bot-msg', JSON.stringify({text, sender}))
+          s.event.emit('messenger-bot-msg', {text, sender})
       }
   }
 }
