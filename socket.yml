@@ -1,0 +1,29 @@
+name: messenger-bot
+version: 0.0.1
+description: Facebook Messenger Bot
+
+config:
+  FACEBOOK_APP_TOKEN:
+    required: true
+
+event_handlers:
+  events.messenger-bot-msg:
+    description: Handling sending message to FB user
+    file: scripts/message_received.js
+
+endpoints:
+  webhook:
+    description: For authentication purpose
+    file: scripts/webhook.js
+    parameters:
+      verify_token:
+        type: string
+        description: Token
+        example: 21ds2b214kj1k24g64h34g6k643k
+    response:
+      mimetype: text/plain
+      examples:
+        -
+          exit_code: 200
+          description: Success
+          example: Some response
