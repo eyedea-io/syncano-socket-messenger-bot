@@ -1,6 +1,8 @@
 import {debug} from './helpers/debug';
 import s from './helpers/syncano';
 
+console.log(META)
+
 if (ARGS['hub.mode'] === 'subscribe') {
   if (ARGS['hub.verify_token'] === 'messenger-bot') {
     setResponse(new HttpResponse(200, ARGS['hub.challenge'], 'text/plain'));
@@ -17,8 +19,8 @@ if (ARGS.entry && ARGS.entry[0] && ARGS.entry[0].messaging) {
       if (event.message && event.message.text) {
           let text = event.message.text
           // Sending event
-          debug('messenger-bot-msg', JSON.stringify({text, sender}))
-          s.event.emit('messenger-bot-msg', {text, sender})
+          debug('m-bot-msg-rec', JSON.stringify({text, sender}))
+          s.event.emit('m-bot-msg-rec', {text, sender})
       }
   }
 }

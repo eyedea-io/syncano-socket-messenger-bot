@@ -1,21 +1,20 @@
 name: messenger-bot
-version: 0.0.1
-description: Facebook Messenger Bot
-
+version: 0.0.2
+description: 'Facebook Messenger Bot'
+keywords:
+  - messenger
+  - facebook
+  - bot
 config:
   FACEBOOK_APP_TOKEN:
-    description: Facebook App Page Token
-    long_description: |
-      To find the token, go to the 'Messenger > Settings > Token Generation'
-      section in your Facebook Application settings panel at https://developers.facebook.com.
+    description: 'Facebook App Page Token'
+    long_description: "To find the token, go to the 'Messenger > Settings > Token Generation'\nsection in your Facebook Application settings panel at https://developers.facebook.com.\n"
     required: true
-
 event_handlers:
-  events.m-bot-send-msg:
-    description: Handling sending message to FB user
+  events.m-bot-msg-send:
+    description: 'Handling sending message to FB user'
     file: scripts/send_message.js
-
 endpoints:
   webhook:
-    description: For authentication purpose
+    description: 'For authentication purpose'
     file: scripts/webhook.js
