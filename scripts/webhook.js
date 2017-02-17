@@ -1,7 +1,9 @@
+import connect from 'syncano-server'
 import {debug} from './helpers/debug';
-import s from './helpers/syncano';
 
-console.log(META)
+const s = connect() // Connect to Syncano
+
+console.log(ARGS, META)
 
 if (ARGS['hub.mode'] === 'subscribe') {
   if (ARGS['hub.verify_token'] === 'messenger-bot') {
@@ -24,5 +26,3 @@ if (ARGS.entry && ARGS.entry[0] && ARGS.entry[0].messaging) {
       }
   }
 }
-
-setResponse(new HttpResponse(202));

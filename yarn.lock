@@ -24,7 +24,7 @@ node-fetch@^1.6.3:
     is-stream "^1.0.1"
 
 syncano-server@beta:
-  version "0.7.2-12"
-  resolved "https://registry.yarnpkg.com/syncano-server/-/syncano-server-0.7.2-12.tgz#360a9d4fd5f7be0c902dede17641136295242833"
+  version "0.7.2-17"
+  resolved "https://registry.yarnpkg.com/syncano-server/-/syncano-server-0.7.2-17.tgz#91efa1f1c220d0c767d3483e6291da8ad40ea60b"
   dependencies:
     node-fetch "^1.6.3"
