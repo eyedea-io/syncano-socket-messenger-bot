@@ -3,8 +3,6 @@ import {debug} from './helpers/debug';
 
 const s = connect() // Connect to Syncano
 
-console.log(ARGS, META)
-
 if (ARGS['hub.mode'] === 'subscribe') {
   if (ARGS['hub.verify_token'] === 'messenger-bot') {
     setResponse(new HttpResponse(200, ARGS['hub.challenge'], 'text/plain'));

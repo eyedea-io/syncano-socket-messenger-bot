@@ -1,21 +1,46 @@
 name: messenger-bot
-version: 0.0.21
-description: 'Facebook Messenger Bot'
-url: https://github.com/eyedea-io/syncano-socket-messenger-bot
+version: 0.0.24
+description: Facebook Messenger Bot
+url: 'https://github.com/eyedea-io/syncano-socket-messenger-bot'
 keywords:
   - messenger
   - facebook
   - bot
 config:
   FACEBOOK_APP_TOKEN:
-    description: 'Facebook App Page Token'
-    long_description: "To find the token, go to the 'Messenger > Settings > Token Generation'\nsection in your Facebook Application settings panel at https://developers.facebook.com.\n"
+    description: Facebook App Page Token
+    long_description: >
+      To find the token, go to the 'Messenger > Settings > Token Generation'
+
+      section in your Facebook Application settings panel at
+      https://developers.facebook.com.
     required: true
 event_handlers:
   events.m-bot-msg-send:
-    description: 'Handling sending message to FB user'
+    description: Handling sending message to the Facebook user
     file: scripts/send_message.js
+    parameters:
+      text:
+        type: string
+        description: Content of the message to send
+        example: This is my example response!
+      sender:
+        type: string
+        description: ID of the message sender
+        example: '123123123123'
+events:
+  m-bot-msg-rec:
+    description: Emited after successful reception of the message
+    parameters:
+      text:
+        type: string
+        description: Content of the message
+        example: Hello from Facebook Messenger!
+      sender:
+        type: string
+        description: ID of the message sender
+        example: '123123123123'
 endpoints:
   webhook:
-    description: 'For authentication purpose'
+    description: For authentication purpose
     file: scripts/webhook.js

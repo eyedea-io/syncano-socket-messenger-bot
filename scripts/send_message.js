@@ -1,5 +1,6 @@
 import request from 'request';
 
+
 function sendTextMessage(text, sender) {
     let messageData = { text: text }
     request({
