@@ -16,9 +16,9 @@ config:
       https://developers.facebook.com.
     required: true
 event_handlers:
-  events.m-bot-msg-send:
+  events.message-send:
     description: Handling sending message to the Facebook user
-    file: scripts/send_message.js
+    file: scripts/send-message.js
     parameters:
       text:
         type: string
@@ -29,7 +29,7 @@ event_handlers:
         description: ID of the message sender
         example: '123123123123'
 events:
-  m-bot-msg-rec:
+  message-received:
     description: Emited after successful reception of the message
     parameters:
       text:
