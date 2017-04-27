@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "request": "2.81.0",
-    "syncano-server": "beta"
+    "request": "^2.81.0",
+    "syncano-server": "^0.8.1"
   }
 }
