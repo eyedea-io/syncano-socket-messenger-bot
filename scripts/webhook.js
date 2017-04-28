@@ -1,6 +1,6 @@
 import {logger, event, response} from 'syncano-server'
 
-console.log("XXX", logger, event, response)
+
 const {debug} = logger('webhook.js');
 
 if (ARGS['hub.mode'] === 'subscribe') {
