@@ -36,6 +36,16 @@ events:
         type: string
         description: Content of the message
         example: Hello from Facebook Messenger!
+      attachment:
+        type: object
+        description: JSON object defining attachement
+        example: |
+          {
+            "type": "image",
+            "payload": {
+              "url": "http://my_domian.com/my_image.png"
+            }
+          }
       sender:
         type: string
         description: ID of the message sender
