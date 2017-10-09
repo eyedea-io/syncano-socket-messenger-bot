@@ -21,9 +21,6 @@ export default (ctx) => {
         const text = fbEvent.message.text
         debug('Sending event', {text, sender})
         return event.emit('message-received', {text, sender})
-          .then(() => {
-            console.log("XXX")
-          })
       }
     }
   }
