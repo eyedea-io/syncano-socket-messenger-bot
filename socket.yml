@@ -18,7 +18,7 @@ config:
 event_handlers:
   events.message-send:
     description: Handling sending message to the Facebook user
-    file: scripts/send-message.js
+    file: send-message.js
     parameters:
       text:
         type: string
@@ -53,4 +53,4 @@ events:
 endpoints:
   webhook:
     description: For authentication purpose
-    file: scripts/webhook.js
+    file: webhook.js
