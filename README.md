@@ -1,10 +1,5 @@
 # Syncano Socket for Facebook Messenger Bot
 
-Main Socket features:
-
-* **openweathermap/get-temperature** — current temperature for the city
-* **openweathermap/get-three-hours** — 3 hours forecast for the city
-
 ## Getting Started
 
 Install package in your project:
