@@ -20,6 +20,5 @@ describe('generate', function () {
 
     const result = await run('endpoint', {args})
     expect(result).toHaveProperty('code', 200)
-    // expect(result.data).toHaveProperty('objects')
   })
 })
