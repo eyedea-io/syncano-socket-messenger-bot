@@ -12,6 +12,9 @@ Main Socket features:
 * **messenger-bot/send-message** — sends message to Facebook
 * **messenger-bot/webhook** — authentication endpoint
 
+# Syncano Socket for Facebook Messenger Bot
+
+
 ## Getting Started
 
 Install package in your project:
@@ -24,16 +27,3 @@ npx s deploy
 ```
 
 
-Use it:
-
-```js
-import Syncano from '@syncano/client'
-
-const s = new Syncano(<instaneName>)
-
-// Search for a user
-const params = {
-}
-const suggestions = await s.get('<name>/<endpoint>', params)
-
-```
