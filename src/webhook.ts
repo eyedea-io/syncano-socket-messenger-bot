@@ -45,6 +45,7 @@ class Endpoint extends S.Endpoint {
         if (fbEvent.message && fbEvent.message.text) {
           const text = fbEvent.message.text
           debug('Sending event', {text, sender})
+
           return event.emit('message-received', {text, sender})
         }
       }

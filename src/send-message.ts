@@ -1,41 +1,31 @@
+import Syncano from '@syncano/core'
 import request from 'request'
-import * as S from '@eyedea/syncano'
 
-interface Args {
-  text: string
-  sender: string
-  attachment: any
-}
+export default async ctx => {
+  const {response} = new Syncano(ctx)
+  const {text, sender, attachment} = ctx.args
 
-class Endpoint extends S.Endpoint<Args> {
-  async run(
-    {}: S.Core,
-    {args, config}: S.Context<Args>
-  ) {
-    const sendMessage = (messageData, sender) => {
+  const sendMessage = (messageData, recipient) => {
       request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token: config.FACEBOOK_APP_TOKEN},
+        qs: {access_token: ctx.config.FACEBOOK_APP_TOKEN},
         method: 'POST',
         json: {
-          recipient: {id: sender},
-          message: messageData
-        }
-      }, function (error, response) {
+          recipient: {id: recipient},
+          message: messageData,
+        },
+      }, function (error: any, res: any) {
         if (error) {
-          console.log('Error sending message: ', error)
-        } else if (response.body.error) {
-          console.log('Error: ', response.body.error)
+          response(error, 400)
+        } else if (res.body.error) {
+          response(res.body.error, 400)
         }
       })
     }
 
-    sendMessage({text: args.text}, args.sender)
+  sendMessage({text}, sender)
 
-    if (args.attachment) {
-      sendMessage({attachment: args.attachment}, args.sender)
+  if (attachment) {
+      sendMessage({attachment}, sender)
     }
   }
-}
-
-export default ctx => new Endpoint(ctx)

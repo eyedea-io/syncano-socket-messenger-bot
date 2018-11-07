@@ -27,6 +27,16 @@ event_handlers:
         type: string
         description: ID of the message sender
         example: '123123123123'
+      attachment:
+        type: object
+        description: JSON object defining attachement
+        example: |
+          {
+            "type": "image",
+            "payload": {
+              "url": "http://my_domain.com/my_image.png"
+            }
+          }
 events:
   message-received:
     description: Emited after successful reception of the message
