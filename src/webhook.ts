@@ -30,9 +30,9 @@ class Endpoint extends S.Endpoint {
 
     if (args['hub.mode'] === 'subscribe') {
       if (args['hub.verify_token'] === 'messenger-bot') {
-        response(args['hub.challenge'])
+        return response(args['hub.challenge'])
       } else {
-        response('Wrong token!', 400)
+        return response('Wrong token!', 400)
       }
     }
 
@@ -50,6 +50,8 @@ class Endpoint extends S.Endpoint {
         }
       }
     }
+
+    return response('Wrong arguments', 400)
   }
 }
 

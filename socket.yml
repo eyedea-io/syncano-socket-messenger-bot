@@ -63,3 +63,38 @@ endpoints:
   webhook:
     description: For authentication purpose
     file: webhook.js
+    inputs:
+      properties:
+        hub:
+          type: object
+          description: Used for messenger platform verification
+          example: |
+            {
+              hub: {
+                mode: 'subscribe',
+                verify_token: 'messenger-bot'
+              }
+            } 
+        entry:
+          type: array
+          description: Message object
+          example: |
+              "entry": [
+                {
+                  "id":"<PAGE_ID>",
+                  "time":1458692752478,
+                  "messaging":[
+                    {
+                      "sender":{
+                        "id":"<PSID>"
+                      },
+                      "recipient":{
+                        "id":"<PAGE_ID>"
+                      },
+                      "message": {
+                        "text": "hello, world!"
+                      }
+                    }
+                  ]
+                  }
+              ]
