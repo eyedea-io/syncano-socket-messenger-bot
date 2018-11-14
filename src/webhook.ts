@@ -30,9 +30,9 @@ class Endpoint extends S.Endpoint {
 
     if (args['hub.mode'] === 'subscribe') {
       if (args['hub.verify_token'] === 'messenger-bot') {
-        response(args['hub.challenge'])
+        return response(args['hub.challenge'])
       } else {
-        response('Wrong token!', 400)
+        return response('Wrong token!', 400)
       }
     }
 
@@ -45,10 +45,13 @@ class Endpoint extends S.Endpoint {
         if (fbEvent.message && fbEvent.message.text) {
           const text = fbEvent.message.text
           debug('Sending event', {text, sender})
+
           return event.emit('message-received', {text, sender})
         }
       }
     }
+
+    return response('Wrong arguments', 400)
   }
 }
 

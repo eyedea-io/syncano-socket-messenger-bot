@@ -27,6 +27,16 @@ event_handlers:
         type: string
         description: ID of the message sender
         example: '123123123123'
+      attachment:
+        type: object
+        description: JSON object defining attachement
+        example: |
+          {
+            "type": "image",
+            "payload": {
+              "url": "http://my_domain.com/my_image.png"
+            }
+          }
 events:
   message-received:
     description: Emited after successful reception of the message
@@ -53,3 +63,38 @@ endpoints:
   webhook:
     description: For authentication purpose
     file: webhook.js
+    inputs:
+      properties:
+        hub:
+          type: object
+          description: Used for messenger platform verification
+          example: |
+            {
+              hub: {
+                mode: 'subscribe',
+                verify_token: 'messenger-bot'
+              }
+            } 
+        entry:
+          type: array
+          description: Message object
+          example: |
+              "entry": [
+                {
+                  "id":"<PAGE_ID>",
+                  "time":1458692752478,
+                  "messaging":[
+                    {
+                      "sender":{
+                        "id":"<PSID>"
+                      },
+                      "recipient":{
+                        "id":"<PAGE_ID>"
+                      },
+                      "message": {
+                        "text": "hello, world!"
+                      }
+                    }
+                  ]
+                  }
+              ]
