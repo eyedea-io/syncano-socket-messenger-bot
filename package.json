@@ -1,6 +1,6 @@
 {
   "name": "@eyedea-sockets/messenger-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Socket for Facebook Messenger Platform communication",
   "repository": "https://github.com/eyedea-io/syncano-socket-messenger-bot.git",
   "public": true,
