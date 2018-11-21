@@ -11,7 +11,7 @@
     "socket"
   ],
   "peerDependencies": {
-    "@syncano/cli": "^0.13.0-alpha.f6ea95d4"
+    "@syncano/cli": "^0.15.0-alpha.eb87735c"
   },
   "dependencies": {
     "@eyedea/syncano": "0.2.0",
