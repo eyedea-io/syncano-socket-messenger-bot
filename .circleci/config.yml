@@ -16,7 +16,7 @@ jobs:
           - v7-dependencies-{{ checksum "package.json" }}
 
       - run: npm install
-      - run: npm install @syncano/cli@canary --no-save
+      - run: npm install @syncano/cli@canary
       - run: npm run build
       - run: npx s compile
 
