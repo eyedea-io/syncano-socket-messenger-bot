@@ -13,20 +13,20 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v6-dependencies-{{ checksum "package.json" }}
+          - v7-dependencies-{{ checksum "package.json" }}
 
       - run: npm install
       - run: npm install @syncano/cli@canary --no-save
       - run: npm run build
-      - run: npx @syncano/cli compile
+      - run: npx s compile
 
       - save_cache:
           paths:
             - node_modules
-          key: v6-dependencies-{{ checksum "package.json" }}
+          key: v7-dependencies-{{ checksum "package.json" }}
 
       - save_cache:
-          key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: v7-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ~/repo
 
@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: v7-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run: npm run test
 
       - store_artifacts:
@@ -58,7 +58,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: v7-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: npm publish --tag canary --access=public
 
@@ -71,7 +71,7 @@ jobs:
 
     steps:
       - restore_cache:
-          key: v6-repo-{{ .Environment.CIRCLE_SHA1 }}
+          key: v7-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: npm dist-tag add `npm view . name`@`node -p "require('./package.json').version"` latest
 
